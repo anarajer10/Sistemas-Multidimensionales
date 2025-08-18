@@ -6,10 +6,10 @@ como prueba además de la explicación dada.
 
 ## Herramientas utilizadas
 Durante estas prácticas se aplicaron los conocimientos teóricos adquiridos en la asignatura mediante
-estas herramientas:
--**Metabase**
--**Power BI**
--**Power Query**
--**Pentaho**
-  -Pentaho Schema Workbench
-  -Pentaho Aggregation Designer
+estas herramientas:<br>
+-**Metabase**<br>
+-**Power BI**<br>
+-**Power Query**<br>
+-**Pentaho**<br>
+  -Pentaho Schema Workbench<br>
+  -Pentaho Aggregation Designer<br>
