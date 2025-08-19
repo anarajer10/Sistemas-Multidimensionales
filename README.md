@@ -11,5 +11,6 @@ estas herramientas:<br>
 -**Power BI**<br>
 -**Power Query**<br>
 -**Pentaho**<br>
+  -Pentaho Data Integration<br>
   -Pentaho Schema Workbench<br>
   -Pentaho Aggregation Designer<br>
