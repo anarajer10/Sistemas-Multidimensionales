@@ -1,0 +1,104 @@
+<Schema name="Ventas dia">
+  <Cube name="Ventas dia" visible="true" description="ventas dia" cache="true" enabled="true">
+    <Table name="fact_ventas_dia" schema="public">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="dim_cuando_key" highCardinality="false" name="Cuando" description="ventas dia">
+      <Hierarchy name="Jerarqu&#237;a Semana-A&#241;o" visible="true" hasAll="true" allMemberName="Todo Cuando" allLevelName="Todo Cuando" primaryKey="dim_cuando_key" description="ventas dia">
+        <Table name="dim_cuando" schema="public">
+        </Table>
+        <Level name="anio" visible="true" column="anio" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="anio_semana" visible="true" column="anio_semana" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="semana" visible="true" column="semana" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="semana_dia" visible="true" column="semana_dia" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="fecha" visible="true" column="fecha" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Jerarqu&#237;a Mes-A&#241;o" visible="true" hasAll="true" allMemberName="Todo Cuando" allLevelName="Todo Cuando" primaryKey="dim_cuando_key" description="ventas dia">
+        <Table name="dim_cuando" schema="public">
+        </Table>
+        <Level name="anio" visible="true" column="anio" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="anio_mes" visible="true" column="anio_mes" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="mes" visible="true" column="mes" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="mes_dia" visible="true" column="mes_dia" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="fecha" visible="true" column="fecha" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="dim_donde_key" highCardinality="false" name="Donde" description="ventas dia">
+      <Hierarchy name="Jerarqu&#237;a CCAA" visible="true" hasAll="true" allMemberName="Todo Donde" allLevelName="Todo Donde" primaryKey="dim_donde_key" description="ventas dia">
+        <Table name="dim_donde" schema="public">
+        </Table>
+        <Level name="Comunidad Autonoma" visible="true" column="c_autonoma" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="provincia" visible="true" column="provincia" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="municipio" visible="true" column="municipio" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="cod_postal" column="codigo_postal" type="String">
+          </Property>
+        </Level>
+        <Level name="tienda" visible="true" column="tienda" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="cod_tienda" column="cod_tienda" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="dim_que_key" highCardinality="false" name="Que" description="ventas dia">
+      <Hierarchy name="Jerarquia Fabricante Pais" visible="true" hasAll="true" allMemberName="Todo Que" allLevelName="Todo Que" primaryKey="dim_que_key" description="ventas dia">
+        <Table name="dim_que" schema="public">
+        </Table>
+        <Level name="fabricante_pais" visible="true" column="fabricante_pais" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="fabricante_CCAA" visible="true" column="fabricante_c_aut" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="fabricante_provincia" visible="true" column="fabricante_prov" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="fabricante" visible="true" column="fabricante" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="producto" visible="true" column="codigo_barras" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="peso_volumen" column="peso_volumen" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Jerarquia Departamento" visible="true" hasAll="true" allMemberName="Todo Que" allLevelName="Todo Que" primaryKey="dim_que_key" description="ventas dia">
+        <Table name="dim_que" schema="public">
+        </Table>
+        <Level name="departamento" visible="true" column="departamento" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="tipo" visible="true" column="tipo" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="descripcion" column="descripcion" type="String">
+          </Property>
+        </Level>
+        <Level name="producto" visible="true" column="codigo_barras" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="peso_volumen" column="peso_volumen" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Jerarquia Marca" visible="true" hasAll="true" allMemberName="Todo Que" allLevelName="Todo Que" primaryKey="dim_que_key" description="ventas dia">
+        <Table name="dim_que" schema="public">
+        </Table>
+        <Level name="marca" visible="true" column="marca" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="producto" visible="true" column="codigo_barras" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Cantidad" column="cantidad" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Numero Filas" column="num_filas" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="PVP" column="pvp" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Tickets" column="tickets" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+    <CalculatedMember name="Importe" formula="[Measures].[Cantidad]*[Measures].[PVP]" dimension="Measures" visible="true">
+    </CalculatedMember>
+  </Cube>
+</Schema>

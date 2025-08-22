@@ -1,0 +1,74 @@
+<Schema name="Madrid">
+  <Cube name="Padron" visible="true" description="Madrid" cache="true" enabled="true">
+    <Table name="padron_madrid" schema="public">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="cuando_key" highCardinality="false" name="Cuando" description="Madrid">
+      <Hierarchy name="Jerarquia Decenio" visible="true" hasAll="true" allMemberName="Todo Cuando" allLevelName="Todo Cuando" primaryKey="cuando_key" description="Madrid">
+        <Table name="cuando_madrid" schema="public">
+        </Table>
+        <Level name="Decenio" visible="true" column="decenio" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Periodo" visible="true" column="periodo" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="donde_key" highCardinality="false" name="Donde" description="Madrid">
+      <Hierarchy name="Geografia" visible="true" hasAll="true" allMemberName="Todo Donde" allLevelName="Todo Donde" primaryKey="donde_key" description="Madrid">
+        <Table name="donde_madrid" schema="public">
+        </Table>
+        <Level name="Provincia" visible="true" column="provincia" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="Comunidad Autonoma" column="comunidad_autonoma" type="String">
+          </Property>
+        </Level>
+        <Level name="Comarca" visible="true" column="comarca" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Municipio" visible="true" column="municipio" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="Codigo" column="cod_municipio" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Jerarquia Habitantes" visible="true" hasAll="true" allMemberName="Todo Donde" allLevelName="Todo Donde" primaryKey="donde_key" description="Madrid">
+        <Table name="donde_madrid" schema="public">
+        </Table>
+        <Level name="Nivel habitantes" visible="true" column="nivel_habitantes" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Municipio" visible="true" column="municipio" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="Codigo" column="cod_municipio" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Jerarquia Superficie" visible="true" hasAll="true" allMemberName="Todo Donde" allLevelName="Todo Donde" primaryKey="donde_key" description="Madrid">
+        <Table name="donde_madrid" schema="public">
+        </Table>
+        <Level name="Nivel Superficie" visible="true" column="nivel_superficie" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Municipio" visible="true" column="municipio" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="Codigo" column="cod_municipio" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Jerarquia Altitud" visible="true" hasAll="true" allMemberName="Todo Donde" allLevelName="Todo Donde" primaryKey="donde_key" description="Madrid">
+        <Table name="donde_madrid" schema="public">
+        </Table>
+        <Level name="Nivel Altitud" visible="true" column="nivel_altitud" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="municipio" visible="true" column="municipio" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="Codigo" column="cod_municipio" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Mujeres" column="mujeres" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Hombres" column="hombres" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Superficie Ha" column="superficie_ha" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+    <CalculatedMember name="Habitantes" formula="[Measures].[Mujeres]+[Measures].[Hombres]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Densidad Ha" formula="[Measures].[Habitantes]/[Measures].[Superficie Ha]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Densidad Km2" formula="[Measures].[Densidad Ha] / 100" dimension="Measures" visible="true">
+    </CalculatedMember>
+  </Cube>
+</Schema>
